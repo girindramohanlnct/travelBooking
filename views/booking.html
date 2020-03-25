@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <title>TravelBooking</title>
+  </head>
+  <body>
+    <!-- Navbar start @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">TravelBooking</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+        </ul>
+
+        <a href="booking/signin"
+          ><button id="login" class="btn btn-outline-success mx-2 my-sm-0">
+            Login
+          </button></a
+        >
+
+        <a href="booking/registration"
+          ><button id="register" class="btn btn-outline-success mx-2 my-sm-0">
+            Register
+          </button></a
+        >
+        <button
+          id="logout"
+          class="btn btn-outline-success mx-2 my-sm-0"
+          onclick="logout1()"
+        >
+          Logout
+        </button>
+      </div>
+    </nav>
+
+    <!-- Navbar end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+    <div id="user"></div>
+    <div class="container">
+      <input
+        type="text"
+        class=" my-3 form-control"
+        id="from"
+        value="Bangalore, Karnataka, India"
+        disabled
+      />
+
+      <input type="text" class=" my-2 form-control" id="to" placeholder="To" />
+
+      <button class="btn btn-primary" onclick="calcRoute()">
+        Show Details
+      </button>
+    </div>
+
+    <div class="container">
+      <div
+        id="googleMap"
+        style="width: 100%; height: 300px; margin: 50px auto;"
+      ></div>
+      <div id="output"></div>
+    </div>
+    <div class="container"></div>
+
+    <select
+      class="form-control container my-2"
+      id="driver"
+      style="width: 50%;"
+      onchange="populateFair()"
+    >
+      <option value="" selected>Choose Driver</option>
+      <option value="super">Super</option>
+      <option value="delux">Delux</option>
+      <option value="premium">Premium</option>
+    </select>
+
+    <div class="container my-2 " style="width: 50%;" id="fair"></div>
+    <button
+      class=" btn btn-primary container my-2 "
+      style="width: 50%;"
+      id="book"
+      onclick="bookNow()"
+    >
+      Book Car
+    </button>
+
+    <!--  @@@@@@@@@@@@@@@@@@@@   MAP    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIm4o7QIpKIv41pYkX5FrF4XD6n9oHY_g&libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/JS/booking.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
