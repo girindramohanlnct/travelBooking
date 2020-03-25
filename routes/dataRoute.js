@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 
 router.post("/register", (req, res, next) => {
   fullname = req.body.fullName;
-  console.log(fullname);
   if (req.body.password === req.body.confirmPassword) {
     bcrypt.hash(req.body.password, 10).then(hash => {
       const user = new User({
@@ -40,8 +39,6 @@ router.post("/register", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-  console.log(req.body.email, "login");
-  console.log(req.param.email, "waah login");
   let fatchedUser;
   User.findOne({ email: req.body.email })
     .then(user => {

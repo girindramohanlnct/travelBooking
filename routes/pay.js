@@ -48,5 +48,4 @@ router.post("/", (req, res) => {
     });
 });
 
-router.get("/cancel", (req, res) => res.send("Cancelled"));
 module.exports = router;

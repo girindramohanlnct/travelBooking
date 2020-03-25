@@ -22,7 +22,9 @@
     <!-- Navbar start @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">TravelBooking</a>
+      <a class="navbar-brand" href="http://localhost:3000/booking"
+        >TravelBooking</a
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -38,7 +40,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="http://localhost:3000/booking"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
@@ -63,7 +65,8 @@
             class="form-control"
             id="fullName"
             name="fullName"
-            placeholder="Enter Full Name"
+            placeholder="Full Name"
+            required
           />
         </div>
         <div class="form-group">
@@ -73,7 +76,8 @@
             class="form-control"
             name="email"
             id="email"
-            placeholder="Enter email"
+            placeholder="Email"
+            required
           />
         </div>
         <div class="form-group">
@@ -83,7 +87,8 @@
             class="form-control"
             name="phone"
             id="phone"
-            placeholder="Enter Phone No"
+            placeholder="Phone No"
+            required
           />
         </div>
         <div class="form-group">
@@ -94,6 +99,7 @@
             name="password"
             id="password"
             placeholder="Password"
+            required
           />
         </div>
         <div class="form-group">
@@ -104,6 +110,7 @@
             name="confirmPassword"
             id="confirmPassword"
             placeholder="Confirm Password"
+            required
           />
         </div>
       </form>

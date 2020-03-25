@@ -8,7 +8,6 @@ console.log(localStorage.getItem("token"));
 if (localStorage.getItem("token")) {
   isAuth = true;
   islogout = false;
-  console.log("google");
   document.getElementById("register").style.visibility = "hidden";
   document.getElementById("login").style.visibility = "hidden";
   document.getElementById(
@@ -53,7 +52,6 @@ function calcRoute() {
     travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
     unitSystem: google.maps.UnitSystem.METRIC
   };
-  console.log("inside valcRoute");
 
   //pass the request to the route method
   directionsService.route(request, function(result, status) {
@@ -64,17 +62,11 @@ function calcRoute() {
       d = d.join("");
       let distance = parseInt(d);
       distanceFull = distance;
-      console.log(distance);
       let day = Math.round(distance / 300);
       let coveredDistance = 300 * day;
-      console.log("Cobvered ", coveredDistance);
       let remainDistance = distance - coveredDistance;
-      console.log("remian ", remainDistance);
       let hour = (remainDistance * 24) / 300;
-      console.log("hour ", hour);
       let duration = day + " day(s) " + hour + " hour(s)";
-      console.log("day ", day);
-      console.log("duration ", duration);
 
       $("#output").html(
         "<div class='alert-info'>From: " +
@@ -160,9 +152,8 @@ if (!isClicked) {
 }
 
 function populateFair() {
-  console.log("Fair");
   driverType = document.getElementById("driver").value;
-  console.log(driverType);
+
   if (driverType === "super") {
     let duration = document.getElementById("duration").value;
     let d = duration.split(" ");
@@ -171,33 +162,30 @@ function populateFair() {
     if (0 < d[2] < 1) {
       cost = cost + 300;
     }
-    console.log("cost 2nd ", cost);
+
     cost = cost + distanceFull * 15;
-    console.log("cost lsat ", cost);
   } else if (driverType === "delux") {
     let duration = document.getElementById("duration").value;
     let d = duration.split(" ");
     cost = d[0] * 300;
-    console.log("first 0 ", cost);
+
     if (0 < d[2] < 1) {
       cost = cost + 300;
     }
-    console.log("cost 2nd ", cost);
+
     cost = cost + distanceFull * 18;
-    console.log("cost lsat ", cost);
   } else if (driverType === "premium") {
     let duration = document.getElementById("duration").value;
     let d = duration.split(" ");
     cost = d[0] * 300;
-    console.log("first 0 ", cost);
+
     if (0 < d[2] < 1) {
       cost = cost + 300;
     }
-    console.log("cost 2nd ", cost);
+
     cost = cost + distanceFull * 20;
-    console.log("cost lsat ", cost);
   }
-  console.log("cost ", cost);
+
   document.getElementById("book").style.display = "block";
   document.getElementById("fair").innerHTML = `<form class="my-2">
   <div class="form-row">
@@ -218,7 +206,6 @@ function bookNow() {
     let sessionId = "";
     let url = "http://localhost:3000/booking/pay";
 
-    console.log("pay");
     const data = {
       userId: localStorage.getItem("userId"),
       cost: cost,
@@ -238,12 +225,7 @@ function bookNow() {
       .then(response => response.json())
       .then(data => {
         sessionId = data.sessionId;
-        console.log(
-          " data is fullanme " + data.fullName,
-          " sessio ",
-          sessionId
-        );
-        console.log("data sess ", data.sessionId);
+
         let stripe = Stripe("pk_test_gS4kucM6eUue4ZSDZeA2mrch00YQ4lWBQd");
 
         stripe
